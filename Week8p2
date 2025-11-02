@@ -1,0 +1,17 @@
+#include <stdio.h>
+int main()
+{int a,b,lcm,c;
+printf("Enter number 1");
+scanf("%d",&a);
+printf("Enter number 2");
+scanf("%d",&b);
+c=a%b;
+while (c!=0)
+{a=b;
+b=c;
+c=a%b;}
+printf("Highest common factor is %d\n",b);
+lcm=(a*b)/b;
+printf("Lowest common multiple is %d",lcm);
+return 0;
+}
