@@ -1,3 +1,3 @@
-C programming preactice repository
+C programming practice repository
 
 
