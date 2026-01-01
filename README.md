@@ -1,1 +1,3 @@
-# labwork
+C programming preactice repository
+
+
