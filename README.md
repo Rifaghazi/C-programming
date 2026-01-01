@@ -6,7 +6,9 @@ C programming practice repository
 3. Compile and run the program to see the output.
 4. Feel free to explore and modify the programs to understand them better.
 
+
 **My Learning Journey**
+
 This project is part of my ongoing learning journey in programming. I plan to expand it with more advanced concepts in the future.
 
 🔗 Repository link: [C Programming Practice Repository](https://github.com/Rifaghazi/C-programming)
