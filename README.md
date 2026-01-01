@@ -1,4 +1,5 @@
 C programming practice repository
+
 **How to use?**
 1. Open the repository:  https://github.com/Rifaghazi/C-programming.git
 2. Open any `.c` file in a C compiler (like Code::Blocks, Dev-C++, or Visual Studio Code).
