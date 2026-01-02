@@ -1,5 +1,11 @@
 C programming practice repository
 
+This repository contains basic C programs created to practice programming fundamentals.
+It includes programs on loops, arrays, functions, and structures.
+
+This repository is part of my learning journey as a 1st-year BCA student.
+
+
 **How to use?**
 1. Open the repository:  https://github.com/Rifaghazi/C-programming.git
 2. Open any `.c` file in a C compiler (like Code::Blocks, Dev-C++, or Visual Studio Code).
