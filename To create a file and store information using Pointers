@@ -1,0 +1,28 @@
+#include <stdio.h>
+main()
+{
+FILE *fptr;
+char name[38],classN[10];
+int rno,num,i;
+fptr=fopen("students.txt","w");
+if(fptr==NULL)
+{
+printf("File could not be created");
+return 1;
+}
+printf("Enter the number of students");
+scanf("%d",&num);
+for(i=0;i<num;i++)
+{
+printf("Enter the details of student %d : \n");
+printf("Name :");
+scanf("%s",name);
+printf("Class :");
+scanf("%s",classN);
+printf("Roll no. :");
+scanf("%d",rno);
+fprintf(fptr,"Name: %s Class: %s Roll no. : %d\n",name,classN,rno);
+}
+fclose(fptr);
+printf("Student records written to students.txt\n");
+}
