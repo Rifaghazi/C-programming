@@ -1,0 +1,21 @@
+#include<stdio.h>;
+main() 
+{
+char name[30],line[100];
+int classN,rNo;
+fptr = fopen("students.txt","r");
+if (fptr == NULL)
+{
+printf("file was not found\n");
+return 1;
+}
+printf("Reading student records from file : \n");
+while (fgets(line,sizeof(line),fptr))
+{
+if(sscanf(line,"Name : %s Class : %d Roll no. : %d",name,&classN,&rNo) == 3)
+{
+printf("Name : %s,Class : %d,Roll No. : %d\n",name,classN,rNo);
+}
+}
+fclose(fptr);
+}
