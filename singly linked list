@@ -1,0 +1,243 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define Node structure
+struct node
+{
+    int data;
+    struct node *next;
+};
+
+struct node *head = NULL;
+
+// 1. Creation of List
+void create()
+{
+    struct node *newnode, *temp;
+    int n, i;
+
+    printf("Enter number of nodes: ");
+    scanf("%d", &n);
+
+    for(i = 1; i <= n; i++)
+    {
+        newnode = (struct node*)malloc(sizeof(struct node));
+        printf("Enter data for node %d: ", i);
+        scanf("%d", &newnode->data);
+        newnode->next = NULL;
+
+        if(head == NULL)
+        {
+            head = temp = newnode;
+        }
+        else
+        {
+            temp->next = newnode;
+            temp = newnode;
+        }
+    }
+}
+
+// 2(a). Insertion at Beginning
+void insert_begin()
+{
+    struct node *newnode;
+    newnode = (struct node*)malloc(sizeof(struct node));
+
+    printf("Enter data: ");
+    scanf("%d", &newnode->data);
+
+    newnode->next = head;
+    head = newnode;
+}
+
+// 2(b). Insertion at Middle (after a given value)
+void insert_middle()
+{
+    int key;
+    struct node *newnode, *temp;
+
+    printf("Insert after which value? ");
+    scanf("%d", &key);
+
+    temp = head;
+    while(temp != NULL && temp->data != key)
+    {
+        temp = temp->next;
+    }
+
+    if(temp == NULL)
+    {
+        printf("Value not found!\n");
+        return;
+    }
+
+    newnode = (struct node*)malloc(sizeof(struct node));
+    printf("Enter data: ");
+    scanf("%d", &newnode->data);
+
+    newnode->next = temp->next;
+    temp->next = newnode;
+}
+
+// 2(c). Insertion at End
+void insert_end()
+{
+    struct node *newnode, *temp;
+    newnode = (struct node*)malloc(sizeof(struct node));
+
+    printf("Enter data: ");
+    scanf("%d", &newnode->data);
+    newnode->next = NULL;
+
+    if(head == NULL)
+    {
+        head = newnode;
+        return;
+    }
+
+    temp = head;
+    while(temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+
+    temp->next = newnode;
+}
+
+// 3(a). Deletion from Beginning
+void delete_begin()
+{
+    struct node *temp;
+
+    if(head == NULL)
+    {
+        printf("List is empty!\n");
+        return;
+    }
+
+    temp = head;
+    head = head->next;
+    free(temp);
+}
+
+// 3(b). Deletion from Middle (delete specific value)
+void delete_middle()
+{
+    int key;
+    struct node *temp, *prev;
+
+    printf("Enter value to delete: ");
+    scanf("%d", &key);
+
+    temp = head;
+
+    if(temp != NULL && temp->data == key)
+    {
+        head = temp->next;
+        free(temp);
+        return;
+    }
+
+    while(temp != NULL && temp->data != key)
+    {
+        prev = temp;
+        temp = temp->next;
+    }
+
+    if(temp == NULL)
+    {
+        printf("Value not found!\n");
+        return;
+    }
+
+    prev->next = temp->next;
+    free(temp);
+}
+
+// 3(c). Deletion from End
+void delete_end()
+{
+    struct node *temp, *prev;
+
+    if(head == NULL)
+    {
+        printf("List is empty!\n");
+        return;
+    }
+
+    if(head->next == NULL)
+    {
+        free(head);
+        head = NULL;
+        return;
+    }
+
+    temp = head;
+    while(temp->next != NULL)
+    {
+        prev = temp;
+        temp = temp->next;
+    }
+
+    prev->next = NULL;
+    free(temp);
+}
+
+// 4. Traversal (Display)
+void traverse()
+{
+    struct node *temp = head;
+
+    if(temp == NULL)
+    {
+        printf("List is empty!\n");
+        return;
+    }
+
+    printf("Linked List: ");
+    while(temp != NULL)
+    {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+// Main Menu
+int main()
+{
+    int choice;
+
+    while(1)
+    {
+        printf("\n--- MENU ---\n");
+        printf("1. Create List\n");
+        printf("2. Insert at Beginning\n");
+        printf("3. Insert at Middle\n");
+        printf("4. Insert at End\n");
+        printf("5. Delete from Beginning\n");
+        printf("6. Delete from Middle\n");
+        printf("7. Delete from End\n");
+        printf("8. Traverse\n");
+        printf("9. Exit\n");
+
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch(choice)
+        {
+            case 1: create(); break;
+            case 2: insert_begin(); break;
+            case 3: insert_middle(); break;
+            case 4: insert_end(); break;
+            case 5: delete_begin(); break;
+            case 6: delete_middle(); break;
+            case 7: delete_end(); break;
+            case 8: traverse(); break;
+            case 9: exit(0);
+            default: printf("Invalid choice!\n");
+        }
+    }
+    return 0;
+}
