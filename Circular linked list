@@ -69,7 +69,7 @@ void insert()
 }
 
 // 3. Deletion (from Beginning)
-void delete()
+void delete_node()
 {
     struct node *temp, *last;
 
