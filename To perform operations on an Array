@@ -1,0 +1,71 @@
+#include <stdio.h>
+
+void display(int arr[], int n)
+{
+    int i;
+    printf("Array elements are:\n");
+    for(i = 0; i < n; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+void insertAtPosition(int arr[], int *n, int pos, int value)
+{
+    int i;
+    for(i = *n; i > pos; i--)
+    {
+        arr[i] = arr[i-1];
+    }
+    arr[pos] = value;
+    (*n)++;
+}
+
+void deleteAtPosition(int arr[], int *n, int pos)
+{
+    int i;
+    for(i = pos; i < *n-1; i++)
+    {
+        arr[i] = arr[i+1];
+    }
+    (*n)--;
+}
+
+int main()
+{
+    int arr[25];
+    int n, i, value, pos;
+
+    printf("Enter number of elements: ");
+    scanf("%d",&n);
+
+    printf("Enter elements:\n");
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+
+    display(arr,n);
+
+    printf("Enter position to insert element: ");
+    scanf("%d",&pos);
+    printf("Enter value: ");
+    scanf("%d",&value);
+
+    insertAtPosition(arr,&n,pos,value);
+    display(arr,n);
+
+    printf("Deleting first element\n");
+    deleteAtPosition(arr,&n,0);
+
+    printf("Deleting middle element\n");
+    deleteAtPosition(arr,&n,n/2);
+
+    printf("Deleting last element\n");
+    deleteAtPosition(arr,&n,n-1);
+
+    display(arr,n);
+
+    return 0;
+}
